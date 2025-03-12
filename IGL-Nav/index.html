@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="IGL-Nav: Incremental 3D Gaussian Localization for Image-goal Navigation">
+    <meta name="author" content="Wenxuan Guo, Xiuwei Xu, Hang Yin, Ziwei Wang, Jianjiang Feng, Jie Zhou, Jiwen Lu">
+
+    <title>IGL-Nav: Incremental 3D Gaussian Localization for Image-goal Navigation</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>IGL-Nav: Incremental 3D Gaussian Localization for Image-goal Navigation</h2>
+    <p>
+        <span style="white-space: nowrap; font-size:larger">
+            <a href="https://github.com/GWxuan">Wenxuan Guo</a><sup>1</sup>&nbsp;&nbsp;
+            <a href="https://xuxw98.github.io/">Xiuwei Xu</a><sup>1</sup>&nbsp;&nbsp;
+            <a href="https://bagh2178.github.io/">Hang Yin</a><sup>1</sup>&nbsp;&nbsp;
+            <a href="https://ziweiwangthu.github.io/">Ziwei Wang</a><sup>2</sup>&nbsp;&nbsp;
+            <a href="https://ivg.au.tsinghua.edu.cn/~jfeng/index.html">Jianjiang Feng</a><sup>1</sup>&nbsp;&nbsp;
+            <a href="https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1">Jie Zhou</a><sup>1</sup>&nbsp;&nbsp;
+            <a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a><sup>1</sup>
+        </span>
+        <br><br>
+        <sup>1</sup>Tsinghua University&nbsp;&nbsp;<sup>2</sup>Nanyang Technological University
+        <br><br>
+        <a style="color: #1E90FF;">
+            <img src="https://img.icons8.com/material-outlined/24/000000/file.png" alt="paper" style="vertical-align: middle;">
+            &nbsp;Paper (coming soon)
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a style="color: #1E90FF;">
+            <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="code" style="vertical-align: middle;">
+            &nbsp;Code (coming soon)
+        </a>
+    </p>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="vcontainer">
+        <iframe class='video' src="https://www.youtube.com/embed/uwE-welDBiw" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+
+    <div class="section">
+        <h2>Abstract</h2>
+        <hr>
+        <p>
+            Visual navigation with an image as goal is a fundamental and challenging problem. Conventional methods either rely on end-to-end RL learning or modular-based policy with topological graph or BEV map as memory, which cannot fully model the geometric relationship between the explored 3D environment and the goal image. In order to efficiently and accurately localize the goal image in 3D space, we build our navigation system upon the renderable 3D gaussian (3DGS) representation. However, due to the computational intensity of 3DGS optimization and the large search space of 6-DoF camera pose, directly leveraging 3DGS for image localization during agent exploration process is prohibitively inefficient. To this end, we propose IGL-Nav, an Incremental 3D Gaussian Localization framework for efficient and 3D-aware image-goal navigation. Specifically, we incrementally update the scene representation as new images arrive with feed-forward monocular prediction. Then we coarsely localize the goal by leveraging the geometric information for discrete space matching, which can be equivalent to efficient 3D convolution. When the agent is close to the goal, we finally solve the fine target pose with optimization v
+        </p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3ZV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
