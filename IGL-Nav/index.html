@@ -56,10 +56,36 @@
         <h2>Abstract</h2>
         <hr>
         <p>
-            Visual navigation with an image as goal is a fundamental and challenging problem. Conventional methods either rely on end-to-end RL learning or modular-based policy with topological graph or BEV map as memory, which cannot fully model the geometric relationship between the explored 3D environment and the goal image. In order to efficiently and accurately localize the goal image in 3D space, we build our navigation system upon the renderable 3D gaussian (3DGS) representation. However, due to the computational intensity of 3DGS optimization and the large search space of 6-DoF camera pose, directly leveraging 3DGS for image localization during agent exploration process is prohibitively inefficient. To this end, we propose IGL-Nav, an Incremental 3D Gaussian Localization framework for efficient and 3D-aware image-goal navigation. Specifically, we incrementally update the scene representation as new images arrive with feed-forward monocular prediction. Then we coarsely localize the goal by leveraging the geometric information for discrete space matching, which can be equivalent to efficient 3D convolution. When the agent is close to the goal, we finally solve the fine target pose with optimization v
+            Visual navigation with an image as goal is a fundamental and challenging problem. 
+            Conventional methods either rely on end-to-end RL learning or modular-based policy 
+            with topological graph or BEV map as memory, which cannot fully model the geometric 
+            relationship between the explored 3D environment and the goal image. In order to 
+            efficiently and accurately localize the goal image in 3D space, we build our navigation 
+            system upon the renderable 3D gaussian (3DGS) representation. However, due to the 
+            computational intensity of 3DGS optimization and the large search space of 6-DoF 
+            camera pose, directly leveraging 3DGS for image localization during agent exploration 
+            process is prohibitively inefficient. To this end, we propose IGL-Nav, an Incremental 
+            3D Gaussian Localization framework for efficient and 3D-aware image-goal navigation. 
+            Specifically, we incrementally update the scene representation as new images arrive 
+            with feed-forward monocular prediction. Then we coarsely localize the goal by leveraging 
+            the geometric information for discrete space matching, which can be equivalent to 
+            efficient 3D convolution. When the agent is close to the goal, we finally solve the fine 
+            target pose with optimization via differentiable rendering. The proposed IGL-Nav 
+            outperforms existing state-of-the-art methods by a large margin across diverse 
+            experimental configurations. It can also handle the more challenging free-view image-goal 
+            setting and be deployed on real-world robotic platform using a cellphone to capture 
+            goal image at arbitrary pose. Code will be released.
         </p>
     </div>
 </div>
+
+<p><center>
+    <div id="clustrmaps-widget" style="width:30%">
+        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=imzzpr9dwguDABNG7l2EE7GrM25W6fy8qyT83m4aPno&cl=ffffff&w=a"></script>    
+    </div>        
+    <br>
+    &copy; Wenxuan Guo | Last update: March. 13, 2025
+</center></p>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
