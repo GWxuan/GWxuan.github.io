@@ -31,7 +31,7 @@
 </script>
 
 <body>
-  <!-- 将 max-width 从 800px 调为 1000px，让内容区域更宽 -->
+  <!-- 将 max-width 从 800px 调为 860px，让内容区域更宽 -->
   <table style="width:100%;max-width:860px;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;">
     <tbody>
       <tr style="padding:0px">
@@ -157,7 +157,6 @@
               </tr>
 
               <!-- 论文3：LiDAR-based person re-identification -->
-              <!-- 在此处额外增加padding-top使得间距更大 -->
               <tr>
                 <td style="padding:40px 20px 20px 20px;width:30%;max-width:30%" align="center">
                   <!-- 如果有配图，可替换为相应图片路径 -->
@@ -185,7 +184,43 @@
                   </p>
                 </td>
               </tr>
+            </tbody>
+          </table>
 
+          <!-- 在 Publications 后新增 Selected Projects（仅IGL-Nav） -->
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;margin-bottom:-20px;">
+            <tbody>
+              <tr>
+                <td style="text-indent:20px;width:100%;vertical-align:middle">
+                  <p><heading>Selected Projects</heading></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:0 auto;">
+            <tbody>
+              <tr>
+                <!-- 左侧：仅保留 IGL-Nav 视频 -->
+                <td style="padding: 10px; width: 30%; max-width: 30%; text-align: center; vertical-align: middle;">
+                  <video style="width:305px; height:200px;" controls>
+                    <source src="images/igl-nav.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  <p style="margin: 0; font-size: 12px; color: #555; margin-top: 5px;">IGL-Nav</p>
+                </td>
+
+                <!-- 右侧：IGL-Nav 文字介绍，去掉SG-Nav和UniGoal-->
+                <td width="70%" style="vertical-align: middle; padding: 70px; text-align: left;">
+                  <h3>3D Representation for Visual Navigation</h3>
+                  <p>
+                    We propose incremental 3D Gaussian localization for free-view image-goal navigation in 
+                    <a href="https://GWxuan.github.io/IGL-Nav/">IGL-Nav</a>. We support a challenging application scenario 
+                    where the camera for goal capturing and the agent's camera have very different intrinsics and poses, 
+                    e.g., a cellphone and a RGB-D camera.
+                  </p>
+                </td>
+              </tr>
             </tbody>
           </table>
 
