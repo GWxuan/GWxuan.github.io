@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GesVLA: Gesture-Aware Vision-Language-Action Model with Embedded Representations">
+    <meta name="author" content="Wenxuan Guo, Ziyuan Li, Meng Zhang, Yichen Liu, Yimeng Dong, Chuxi Xu, Yunfei Wei, Ze Chen, Erjin Zhou, Jianjiang Feng">
+
+    <title>GesVLA: Gesture-Aware Vision-Language-Action Model with Embedded Representations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="offcanvas.css" rel="stylesheet">
+    <style>
+    .bibtexsection {
+        background-color: #f8f9fa;
+        padding:5px 5px 5px 5px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        word-break: break-word;
+        overflow-x: auto;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+    </style>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>GesVLA: Gesture-Aware Vision-Language-Action Model<br>with Embedded Representations</h2>
+    <p>
+        <span style="white-space: nowrap; font-size:larger">
+            <a href="https://GWxuan.github.io/">Wenxuan Guo</a><sup>1*</sup>&nbsp;&nbsp;
+            Ziyuan Li<sup>1*</sup>&nbsp;&nbsp;
+            Meng Zhang<sup>2†</sup>&nbsp;&nbsp;
+            Yichen Liu<sup>1</sup>&nbsp;&nbsp;
+            Yimeng Dong<sup>1</sup>&nbsp;&nbsp;
+            Chuxi Xu<sup>1</sup><br>
+            Yunfei Wei<sup>2</sup>&nbsp;&nbsp;
+            Ze Chen<sup>2</sup>&nbsp;&nbsp;
+            Erjin Zhou<sup>2</sup>&nbsp;&nbsp;
+            <a href="https://ivg.au.tsinghua.edu.cn/~jfeng/index.html">Jianjiang Feng</a><sup>1‡</sup>
+        </span>
+        <br><br>
+        <sup>*</sup>Equal contribution&nbsp;&nbsp;
+        <sup>†</sup>Project leader&nbsp;&nbsp;
+        <sup>‡</sup>Corresponding author
+        <br><br>
+        <sup>1</sup>Tsinghua University&nbsp;&nbsp;<sup>2</sup>Dexmal
+        <br><br>
+        <span style="color: #6c757d;">
+            <img src="https://img.icons8.com/material-outlined/24/666666/file.png" alt="paper" style="vertical-align: middle;">
+            &nbsp;Paper (link TBA)
+        </span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://github.com/GWxuan/GesVLA" target="_blank" rel="noopener noreferrer" style="color: #1E90FF;">
+            <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="code" style="vertical-align: middle;">
+            &nbsp;Code (GitHub)
+        </a>
+    </p>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="vcontainer">
+        <iframe class="video" src="https://www.youtube.com/embed/Ll1_xY23UE4" title="GesVLA demo video"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+    <p>
+        If the video does not load, open it on <a href="https://youtu.be/Ll1_xY23UE4" target="_blank" rel="noopener noreferrer">YouTube</a>,
+        or click <a href="https://cloud.tsinghua.edu.cn/f/6d0d69db71c9447a94a7/?dl=1">HERE</a> to download.
+    </p>
+
+    <div class="section">
+        <h2>Abstract</h2>
+        <hr>
+        <p>
+            Vision-Language-Action (VLA) models have shown strong potential for general-purpose robot manipulation
+            by unifying perception and action. However, existing VLA systems primarily rely on textual instructions
+            and struggle to resolve spatial ambiguity in complex scenes with multiple similar objects. To address this
+            limitation, we introduce gesture as a parallel instruction modality and propose a Gesture-aware
+            Vision-Language-Action model (GesVLA). Our approach encodes gesture features directly into the latent space,
+            enabling them to participate in both high-level reasoning and low-level action generation, and adopts a
+            dual-VLM architecture to achieve tight coupling between gesture representations and action policies.
+            At the data level, we construct a scalable gesture data generation pipeline by rendering hand models onto
+            real-world scene images. This reduces the sim-to-real visual gap while producing rich data with diverse
+            motion patterns and corresponding pointing annotations. In addition, we employ a two-stage training
+            strategy to equip the model with both gesture perception and action prediction capabilities. We evaluate
+            our approach on multiple real-world robotic tasks, including a controlled block manipulation task for
+            validation and more practical scenarios such as product and produce selection. Experimental results show
+            that incorporating gesture consistently improves target grounding accuracy and human-robot interaction
+            efficiency, especially in complex and cluttered environments.
+        </p>
+
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/teaser.png" alt="teaser" width="50%">
+                <p class="text-muted" style="font-size: 90%; margin-top: 10px;">
+                    Comparison between language-only VLA and gesture-aware GesVLA: pointing resolves ambiguity in cluttered scenes.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Approach</h2>
+        <hr>
+        <p><b>Dual-VLM architecture.</b> GesVLA separates intent reasoning (<span style="font-variant: small-caps;">VLM</span><sub>int</sub>) from online perception (<span style="font-variant: small-caps;">VLM</span><sub>per</sub>) and action generation. Gesture keypoints are encoded as latent tokens; <span style="font-variant: small-caps;">VLM</span><sub>per</sub> cross-attends to cached states from <span style="font-variant: small-caps;">VLM</span><sub>int</sub> for efficient inference, and a flow-based action expert denoises continuous action chunks.</p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/method_arch.png" alt="architecture" width="98%">
+            </div>
+        </div>
+
+        <hr>
+        <p><b>Data engine and training.</b> We synthesize pointing trajectories on real RGB-D backgrounds with precise 3D targets, building a semi-synthetic dataset for Stage&nbsp;1 intent pre-training; Stage&nbsp;2 trains perception and the action expert on real demonstrations with <span style="font-variant: small-caps;">VLM</span><sub>int</sub> frozen.</p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/data_training.png" alt="data and training" width="98%">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Experiments</h2>
+        <hr>
+        <p><b>Setup and tasks.</b> We evaluate intent reasoning (88 real scenes) and manipulation with a 7-DoF arm using three cameras: pick-and-place blocks, select jelly, and select fruit/vegetable under gesture-language instructions.</p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/setup.png" alt="experimental setup" width="95%">
+            </div>
+        </div>
+        <br>
+        <p><b>Real-robot manipulation.</b> GesVLA improves average success over text-only and pipeline baselines across simple/hard splits of all three tasks.</p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/table_manip.png" alt="manipulation results" width="95%">
+            </div>
+        </div>
+        <br>
+        <p><b>Intent reasoning.</b> Joint modeling of gesture and language yields strong accuracy on held-out real gesture-language trials.</p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/table_intent.png" alt="intent reasoning results" width="70%">
+            </div>
+        </div>
+
+        <hr>
+        <p><b>Qualitative comparison.</b> Native MLLMs often pick the object nearest the fingertip; <span style="font-variant: small-caps;">VLM</span><sub>int</sub> better follows the pointing direction in clutter.</p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/vis.png" alt="qualitative visualization" width="50%">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>BibTeX</h2>
+        <hr>
+        <div class="bibtexsection">
+@article{guo2026gesvla,
+    title={GesVLA: Gesture-Aware Vision-Language-Action Model with Embedded Representations},
+    author={Wenxuan Guo and Ziyuan Li and Meng Zhang and Yichen Liu and Yimeng Dong and Chuxi Xu and Yunfei Wei and Ze Chen and Erjin Zhou and Jianjiang Feng},
+    journal={arXiv preprint},
+    year={2026},
+    note={arXiv identifier to be added}
+}
+        </div>
+    </div>
+    <hr>
+</div>
+
+<p><center>
+    <br>
+    &copy; Wenxuan Guo | Last update: May 11, 2026
+</center></p>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3ZV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
