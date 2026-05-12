@@ -4,162 +4,300 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="AwareVLN: Reasoning with Self-awareness for Vision-Language Navigation">
-    <meta name="author" content="">
+    <meta name="description" content="AwareVLN: Reasoning with Self-awareness for Vision-Language Navigation (CVPR 2026)">
+    <meta name="author" content="Wenxuan Guo, Xiuwei Xu, Yichen Liu, Xiangyu Li, Hang Yin, Huangxing Chen, Wenzhao Zheng, Jianjiang Feng, Jie Zhou, Jiwen Lu">
 
     <title>AwareVLN: Reasoning with Self-awareness for Vision-Language Navigation</title>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="offcanvas.css" rel="stylesheet">
     <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .hero-wrap {
+        text-align: center;
+        padding: 2.5rem 1rem 2rem;
+        max-width: 960px;
+        margin: 0 auto;
+    }
+    .hero-title {
+        font-size: clamp(1.35rem, 3.5vw, 2rem);
+        font-weight: 700;
+        line-height: 1.35;
+        color: #111;
+        margin-bottom: 1.25rem;
+    }
+    .hero-authors {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #222;
+    }
+    .hero-authors a { color: #1a73e8; }
+    .hero-notes {
+        font-size: 0.9rem;
+        color: #444;
+        margin-top: 0.75rem;
+    }
+    .hero-affil {
+        font-size: 1rem;
+        color: #333;
+        margin-top: 0.5rem;
+    }
+    .hero-buttons {
+        margin-top: 1.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.65rem;
+    }
+    .btn-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 1.15rem;
+        border-radius: 999px;
+        background: #2d2d2d;
+        color: #fff !important;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none !important;
+        border: none;
+        transition: background 0.15s ease, opacity 0.15s ease;
+    }
+    .btn-pill:hover { background: #111; color: #fff !important; }
+    .btn-pill-muted {
+        background: #6c757d;
+        cursor: default;
+        pointer-events: none;
+        opacity: 0.92;
+    }
+    .conf-venue {
+        font-size: 1.45rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: #555;
+        margin-top: 1rem;
+    }
+    .section-heading {
+        text-align: center;
+        font-size: 1.35rem;
+        font-weight: 600;
+        margin: 2.5rem 0 1.25rem;
+        color: #111;
+    }
+    .highlights-star {
+        color: #e6b800;
+        margin-right: 0.35rem;
+    }
+    .highlights-list {
+        text-align: left;
+        padding-left: 1.2rem;
+        margin: 0 auto 0;
+        max-width: 720px;
+    }
+    .highlights-list li { margin-bottom: 0.65rem; }
+    .demo-block .task-desc {
+        text-align: justify;
+        margin-bottom: 0.85rem;
+        color: #333;
+    }
+    video.video {
+        object-fit: contain;
+        background: #000;
+    }
+    .teaser-under-abstract {
+        display: block;
+        width: 96%;
+        max-width: 1000px;
+        margin: 1.25rem auto 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
     .bibtexsection {
         background-color: #f8f9fa;
-        padding:5px;
+        padding: 5px;
         font-family: monospace;
-        white-space: pre-wrap;      
-        word-break: break-word;    
-        overflow-x: auto;       
+        white-space: pre-wrap;
+        word-break: break-word;
+        overflow-x: auto;
         border-radius: 5px;
         font-size: 13px;
+    }
+    .demo-alt-links {
+        text-align: center;
+        font-size: 0.95rem;
+        margin-top: 0.75rem;
+        color: #555;
     }
     </style>
 </head>
 
 <body>
 
-<div class="jumbotron jumbotron-fluid">
-    <div class="container"></div>
+<header class="hero-wrap">
+    <h1 class="hero-title">AwareVLN: Reasoning with Self-awareness for<br>Vision-Language Navigation</h1>
+    <div class="hero-authors">
+        <a href="https://GWxuan.github.io/">Wenxuan Guo</a>&nbsp;&nbsp;
+        <a href="https://xuxw98.github.io/">Xiuwei Xu</a><sup>*</sup>&nbsp;&nbsp;
+        Yichen Liu&nbsp;&nbsp;
+        Xiangyu Li&nbsp;&nbsp;
+        <a href="https://bagh2178.github.io/">Hang Yin</a>&nbsp;&nbsp;
+        Huangxing Chen<br>
+        Wenzhao Zheng&nbsp;&nbsp;
+        <a href="https://ivg.au.tsinghua.edu.cn/~jfeng/index.html">Jianjiang Feng</a><sup>†</sup>&nbsp;&nbsp;
+        <a href="https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1">Jie Zhou</a>&nbsp;&nbsp;
+        <a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a><sup>†</sup>
+    </div>
+    <div class="hero-notes">
+        <sup>*</sup>Project leader&nbsp;&nbsp;<sup>†</sup>Corresponding author
+    </div>
+    <div class="hero-affil">Tsinghua University</div>
+    <div class="hero-buttons">
+        <span class="btn-pill btn-pill-muted" title="Coming soon"><i class="far fa-file-pdf"></i> Paper</span>
+        <a href="#demos" class="btn-pill"><i class="fas fa-play"></i> Video</a>
+        <a href="https://github.com/GWxuan/AwareVLN" target="_blank" rel="noopener noreferrer" class="btn-pill"><i class="fab fa-github"></i> Code</a>
+    </div>
+    <p class="text-muted conf-venue mb-0">CVPR 2026</p>
+</header>
 
-    <h2>AwareVLN: Reasoning with Self-awareness for Vision-Language Navigation</h2>
-
-    <p>
-        <span style="white-space: nowrap; font-size:larger">
-            <!-- 作者（自行填写） -->
-            Author1<sup>1*</sup>&nbsp;&nbsp;
-            Author2<sup>1*</sup>&nbsp;&nbsp;
-            Author3<sup>1</sup>&nbsp;&nbsp;
-            Author4<sup>2</sup>
-        </span>
-
-        <br><br>
-        <!-- 单位 -->
-        <sup>1</sup>Institution A&nbsp;&nbsp;
-        <sup>2</sup>Institution B
-
-        <br><br>
-
-        <!-- 链接 -->
-        <a href="#" target="_blank" style="color: #1E90FF;">Paper</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" target="_blank" style="color: #1E90FF;">Code</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" target="_blank" style="color: #1E90FF;">Project Page</a>
-    </p>
-
-    <hr>
-</div>
-
+<hr class="my-0">
 
 <div class="container">
-
-    <!-- 视频 -->
-    <div class="vcontainer">
-        <iframe class='video' src="" frameborder="0" allowfullscreen></iframe>
+    <h2 class="section-heading"><span class="highlights-star">&#9733;</span>Highlights</h2>
+    <div class="pb-4">
+        <ul class="highlights-list">
+            <li><b>Sparse self-aware reasoning</b> at key navigation nodes—instead of only dense action prediction—so the agent explicitly analyzes agent–instruction–scene alignment when it matters.</li>
+            <li>A <b>unified VLM</b> switches between <code>[REASON]</code> and <code>[ACT]</code>, producing structured reflections (scene context, progress, next plan) that condition later control with relative step cues from the last reasoning step.</li>
+            <li>An <b>automatic data engine</b> with progress-aware milestones (e.g., subtask completion, path deviation, stopping errors) feeds rich context into a general VLM to generate scalable supervision without manual annotation.</li>
+            <li><b>Strong VLN-CE results</b> on R2R-CE and RxR-CE with monocular RGB, plus real-world metrics and qualitative rollouts in Habitat and on a deployed quadruped.</li>
+        </ul>
     </div>
 
-    <p>
-        If video does not load, click <a href="#">HERE</a>.
+    <h2 class="section-heading" id="demos">Demo</h2>
+    <div class="demo-block">
+        <p class="task-desc">
+            We visualize representative navigation episodes in simulation and in the real world: the model performs structured reasoning during navigation—for example, detecting a misinterpreted turn and issuing a corrective plan, or recognizing a completed subtask and planning the next phase aligned with the instruction.
+        </p>
+        <div class="vcontainer">
+            <video class="video" controls playsinline autoplay muted preload="metadata" title="AwareVLN demo">
+                <source src="img/AwareVLN_demo.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <p class="demo-alt-links">
+        If the video does not load, click <a href="https://cloud.tsinghua.edu.cn/f/29643d1da61b4aba9180/?dl=1">HERE</a> to download.
     </p>
 
-
-    <!-- Abstract -->
     <div class="section">
         <h2>Abstract</h2>
         <hr>
         <p>
-            <!-- TODO: 填写摘要 -->
+            Vision-and-Language Navigation (VLN) requires an agent to ground language instructions to its own movement
+            within a visual environment. While state-of-the-art methods leverage the reasoning capabilities of
+            Vision-Language Models (VLMs) for end-to-end action prediction, they often lack an explicit and explainable
+            understanding of the relationships between the agent, the instruction, and the scene. Conversely, explicitly
+            building a scene map for heuristic planning is intuitively appealing but relies on additional 3D sensors and
+            hinders large-scale vision-language pre-training. To bridge this gap, we propose AwareVLN, a novel framework
+            that equips the navigation model with a self-aware reasoning mechanism, enabling it to understand the agent's
+            state and task progress in a fully end-to-end and data-driven manner. Our approach features two key innovations:
+            (1) a structural reasoning module that fosters spatial and task-oriented self-awareness, and (2) an automatic
+            data engine with progress division for effective training. Extensive experiments on various datasets in the
+            Habitat simulator show that our AwareVLN significantly outperforms previous state-of-the-art
+            vision-language navigation methods.
         </p>
-
-        <!-- Teaser -->
-        <div class="row align-items-center">
-            <div class="col text-center">
-                <img src="" alt="teaser" width="80%">
-                <p class="text-muted" style="font-size: 90%; margin-top: 10px;">
-                    <!-- caption -->
-                </p>
-            </div>
+        <div class="text-center">
+            <img src="img/teaser.png" class="teaser-under-abstract" alt="AwareVLN overview: self-aware reasoning at key navigation points">
+            <p class="text-muted small mt-2 mb-0">AwareVLN triggers structured, self-aware reasoning at key nodes (e.g., subtask boundaries) rather than relying solely on end-to-end action prediction.</p>
         </div>
     </div>
 
-
-    <!-- Method -->
     <div class="section">
         <h2>Approach</h2>
         <hr>
-
-        <p><b>Overview.</b></p>
+        <p><b>Unified reason–act framework.</b> A single VLM jointly predicts a mode token (<code>[REASON]</code> vs <code>[ACT]</code>) and text: sparse reasoning summarizes scene context, progress, and next-step plans; action mode parses movement commands into low-level primitives. Past reasoning and relative step distance from the last reasoning step are fed back for temporal grounding.</p>
         <div class="row align-items-center">
-            <div class="col text-center">
-                <img src="" width="70%">
+            <div class="col justify-content-center text-center">
+                <img src="img/method1.png" alt="framework" width="95%">
             </div>
         </div>
 
         <hr>
-
-        <p><b>Details.</b></p>
+        <p><b>Automatic data engine.</b> Key reasoning nodes (subtask completion, path deviation, stopping error) are detected automatically using simulator semantics and ground-truth waypoints; a general VLM generates structured supervision at scale without manual annotation.</p>
         <div class="row align-items-center">
-            <div class="col text-center">
-                <img src="" width="95%">
+            <div class="col justify-content-center text-center">
+                <img src="img/method2.png" alt="data engine" width="95%">
             </div>
         </div>
     </div>
 
-
-    <!-- Experiments -->
     <div class="section">
         <h2>Experiments</h2>
         <hr>
-
-        <p><b>Main Results.</b></p>
+        <p><b>Simulation.</b> We evaluate on R2R-CE and RxR-CE (Val-Unseen) in Habitat with monocular RGB. AwareVLN achieves strong results without depth, panoramas, or odometry, compared with methods that may use richer sensing or simulator pre-trained waypoint predictors.</p>
         <div class="row align-items-center">
-            <div class="col text-center">
-                <img src="" width="95%">
+            <div class="col justify-content-center text-center">
+                <img src="img/table_r2r_rxr.png" alt="R2R-CE and RxR-CE results" width="98%">
+            </div>
+        </div>
+        <br>
+        <p><b>Real-world evaluation.</b> We report navigation error and success rate across corridor, home, and office settings with simple vs. complex instructions.</p>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/table_real.png" alt="real-world results" width="70%">
             </div>
         </div>
 
-        <br>
-
-        <p><b>Ablations.</b></p>
+        <hr>
+        <p><b>Qualitative rollouts.</b> Examples in Habitat and on a real quadruped show self-correction after misinterpreting an instruction and progress-aware re-planning at subtask boundaries.</p>
         <div class="row align-items-center">
-            <div class="col text-center">
-                <img src="" width="95%">
+            <div class="col justify-content-center text-center">
+                <img src="img/vis1.png" alt="simulator rollout" width="98%">
+                <p class="text-muted" style="font-size: 90%; margin-top: 8px;">Habitat: deviation recovery and subtask-aware planning.</p>
+            </div>
+        </div>
+        <br>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/vis2.png" alt="real-world rollout" width="98%">
+                <p class="text-muted" style="font-size: 90%; margin-top: 8px;">Real world: long-horizon task with reasoning at subtask boundaries (sim-trained only).</p>
             </div>
         </div>
     </div>
 
-
-    <!-- Bibtex -->
     <div class="section">
-        <h2>Bibtex</h2>
+        <h2>BibTeX</h2>
         <hr>
         <div class="bibtexsection">
-@inproceedings{awarevln2026,
-  title={AwareVLN: Reasoning with Self-awareness for Vision-Language Navigation},
-  author={},
-  booktitle={CVPR},
-  year={2026}
+@inproceedings{guo2026awarevln,
+    title     = {AwareVLN: Reasoning with Self-awareness for Vision-Language Navigation},
+    author    = {Wenxuan Guo and Xiuwei Xu and Yichen Liu and Xiangyu Li and Hang Yin and Huangxing Chen and Wenzhao Zheng and Jianjiang Feng and Jie Zhou and Jiwen Lu},
+    booktitle = {Proceedings of the {IEEE/CVF} Conference on Computer Vision and Pattern Recognition},
+    year      = {2026}
 }
         </div>
     </div>
-
+    <hr>
 </div>
 
+<p class="text-center">
+    <br>
+    &copy; Wenxuan Guo | Last update: May 12, 2026
+</p>
 
-<hr>
-
-<p><center>
-    &copy; Your Name | Last update: 2026
-</center></p>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3ZV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 </body>
 </html>
