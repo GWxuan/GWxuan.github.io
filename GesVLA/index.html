@@ -11,11 +11,116 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="offcanvas.css" rel="stylesheet">
     <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .hero-wrap {
+        text-align: center;
+        padding: 2.5rem 1rem 2rem;
+        max-width: 960px;
+        margin: 0 auto;
+    }
+    .hero-title {
+        font-size: clamp(1.35rem, 3.5vw, 2rem);
+        font-weight: 700;
+        line-height: 1.35;
+        color: #111;
+        margin-bottom: 1.25rem;
+    }
+    .hero-authors {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #222;
+    }
+    .hero-authors a { color: #1a73e8; }
+    .hero-notes {
+        font-size: 0.9rem;
+        color: #444;
+        margin-top: 0.75rem;
+    }
+    .hero-affil {
+        font-size: 1rem;
+        color: #333;
+        margin-top: 0.5rem;
+    }
+    .hero-buttons {
+        margin-top: 1.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.65rem;
+    }
+    .btn-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 1.15rem;
+        border-radius: 999px;
+        background: #2d2d2d;
+        color: #fff !important;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none !important;
+        border: none;
+        transition: background 0.15s ease, opacity 0.15s ease;
+    }
+    .btn-pill:hover { background: #111; color: #fff !important; }
+    .btn-pill-muted {
+        background: #6c757d;
+        cursor: default;
+        pointer-events: none;
+        opacity: 0.92;
+    }
+    .section-heading {
+        text-align: center;
+        font-size: 1.35rem;
+        font-weight: 600;
+        margin: 2.5rem 0 1.25rem;
+        color: #111;
+    }
+    .highlights-star {
+        color: #e6b800;
+        margin-right: 0.35rem;
+    }
+    .highlights-list {
+        text-align: left;
+        padding-left: 1.2rem;
+        margin-bottom: 0;
+    }
+    .highlights-list li { margin-bottom: 0.65rem; }
+    .teaser-img {
+        border-radius: 8px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        max-height: 280px;
+        width: auto;
+        max-width: 88%;
+        object-fit: contain;
+    }
+    .demo-block { margin-bottom: 2.75rem; }
+    .demo-block h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+    .demo-block .task-desc {
+        text-align: justify;
+        margin-bottom: 0.85rem;
+        color: #333;
+    }
+    video.video {
+        object-fit: contain;
+        background: #000;
+    }
     .bibtexsection {
         background-color: #f8f9fa;
-        padding:5px 5px 5px 5px;
+        padding: 5px;
         font-family: monospace;
         white-space: pre-wrap;
         word-break: break-word;
@@ -23,55 +128,113 @@
         border-radius: 5px;
         font-size: 13px;
     }
+    .demo-alt-links {
+        text-align: center;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+        color: #555;
+    }
     </style>
 </head>
 
 <body>
-<div class="jumbotron jumbotron-fluid">
-    <div class="container"></div>
-    <h2>GesVLA: Gesture-Aware Vision-Language-Action Model<br>with Embedded Representations</h2>
-    <p>
-        <span style="white-space: nowrap; font-size:larger">
-            <a href="https://GWxuan.github.io/">Wenxuan Guo</a><sup>1*</sup>&nbsp;&nbsp;
-            Ziyuan Li<sup>1*</sup>&nbsp;&nbsp;
-            Meng Zhang<sup>2†</sup>&nbsp;&nbsp;
-            Yichen Liu<sup>1</sup>&nbsp;&nbsp;
-            Yimeng Dong<sup>1</sup>&nbsp;&nbsp;
-            Chuxi Xu<sup>1</sup><br>
-            Yunfei Wei<sup>2</sup>&nbsp;&nbsp;
-            Ze Chen<sup>2</sup>&nbsp;&nbsp;
-            Erjin Zhou<sup>2</sup>&nbsp;&nbsp;
-            <a href="https://ivg.au.tsinghua.edu.cn/~jfeng/index.html">Jianjiang Feng</a><sup>1‡</sup>
-        </span>
-        <br><br>
+
+<header class="hero-wrap">
+    <h1 class="hero-title">GesVLA: Gesture-Aware Vision-Language-Action Model<br>with Embedded Representations</h1>
+    <div class="hero-authors">
+        <a href="https://GWxuan.github.io/">Wenxuan Guo</a><sup>1*</sup>&nbsp;&nbsp;
+        Ziyuan Li<sup>1*</sup>&nbsp;&nbsp;
+        Meng Zhang<sup>2†</sup>&nbsp;&nbsp;
+        Yichen Liu<sup>1</sup>&nbsp;&nbsp;
+        Yimeng Dong<sup>1</sup>&nbsp;&nbsp;
+        Chuxi Xu<sup>1</sup><br>
+        Yunfei Wei<sup>2</sup>&nbsp;&nbsp;
+        Ze Chen<sup>2</sup>&nbsp;&nbsp;
+        Erjin Zhou<sup>2</sup>&nbsp;&nbsp;
+        <a href="https://ivg.au.tsinghua.edu.cn/~jfeng/index.html">Jianjiang Feng</a><sup>1‡</sup>
+    </div>
+    <div class="hero-notes">
         <sup>*</sup>Equal contribution&nbsp;&nbsp;
         <sup>†</sup>Project leader&nbsp;&nbsp;
         <sup>‡</sup>Corresponding author
-        <br><br>
-        <sup>1</sup>Tsinghua University&nbsp;&nbsp;<sup>2</sup>Dexmal
-        <br><br>
-        <span style="color: #6c757d;">
-            <img src="https://img.icons8.com/material-outlined/24/666666/file.png" alt="paper" style="vertical-align: middle;">
-            &nbsp;Paper (link TBA)
-        </span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://github.com/GWxuan/GesVLA" target="_blank" rel="noopener noreferrer" style="color: #1E90FF;">
-            <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="code" style="vertical-align: middle;">
-            &nbsp;Code (GitHub)
-        </a>
-    </p>
-    <hr>
-</div>
+    </div>
+    <div class="hero-affil">
+        <sup>1</sup>Tsinghua University&nbsp;&nbsp;&nbsp;<sup>2</sup>Dexmal
+    </div>
+    <div class="hero-buttons">
+        <span class="btn-pill btn-pill-muted" title="Coming soon"><i class="far fa-file-pdf"></i> Paper</span>
+        <a href="#demos" class="btn-pill"><i class="fas fa-play"></i> Video</a>
+        <a href="https://github.com/GWxuan/GesVLA" target="_blank" rel="noopener noreferrer" class="btn-pill"><i class="fab fa-github"></i> Code</a>
+    </div>
+</header>
+
+<hr class="my-0">
 
 <div class="container">
-    <div class="vcontainer">
-        <iframe class="video" src="https://www.youtube.com/embed/Ll1_xY23UE4" title="GesVLA demo video"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+    <h2 class="section-heading"><span class="highlights-star">&#9733;</span>Highlights</h2>
+    <div class="row align-items-center pb-4">
+        <div class="col-md-6 order-md-1 order-2">
+            <ul class="highlights-list">
+                <li>Introduces <b>gesture</b> as a parallel instruction modality alongside vision and language to disambiguate targets in cluttered scenes where text alone is insufficient.</li>
+                <li>Encodes hand cues into the <b>latent space</b> of a dual-VLM stack so gesture informs both high-level intent reasoning and low-level action generation with efficient cross-attention.</li>
+                <li>Builds a <b>scalable semi-synthetic gesture pipeline</b> by rendering hands on real RGB-D scenes with precise pointing labels, narrowing the sim-to-real gap.</li>
+                <li>Uses <b>two-stage training</b> (intent pre-training, then real-robot policy learning) and shows strong gains on real manipulation: blocks, jelly selection, and produce selection.</li>
+            </ul>
+        </div>
+        <div class="col-md-6 text-center order-md-2 order-1 mb-4 mb-md-0">
+            <img src="img/teaser.png" class="teaser-img" alt="GesVLA teaser: gesture vs. language-only VLA">
+            <p class="text-muted small mt-2 mb-0">Gesture-aware GesVLA grounds “this / there” under clutter; language-only VLA stays ambiguous.</p>
+        </div>
     </div>
-    <p>
-        If the video does not load, open it on <a href="https://youtu.be/Ll1_xY23UE4" target="_blank" rel="noopener noreferrer">YouTube</a>,
-        or click <a href="https://cloud.tsinghua.edu.cn/f/6d0d69db71c9447a94a7/?dl=1">HERE</a> to download.
+
+    <h2 class="section-heading" id="demos">Demo</h2>
+    <p class="text-center text-muted mb-4">Real-world rollouts with a 7-DoF manipulator and three-camera observations (global, side, gripper). Each clip follows combined gesture-and-language instructions.</p>
+
+    <div class="demo-block">
+        <h3>Pick-and-Place Block</h3>
+        <p class="task-desc">
+            The robot must grasp a specified block from a cluttered arrangement of blocks and place it onto the designated plate.
+            A trial is counted as successful if the correct block is grasped and placed properly.
+            Following our setup, simple trials use fewer than five blocks on the table; hard trials use five or more.
+        </p>
+        <div class="vcontainer">
+            <video class="video" controls playsinline autoplay muted preload="metadata" title="Pick-and-Place Block demo">
+                <source src="img/demo_block.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div class="demo-block">
+        <h3>Select Jelly</h3>
+        <p class="task-desc">
+            Multiple jelly cups are placed on several plates on the table.
+            The robot must grasp one or more specified jelly cups in the indicated pointing order and place them into a target plate.
+            Success requires correctly grasping the targets from the correct plates in the correct order and completing the placement.
+            Simple settings use a single pick-and-place; hard settings use sequential multi-object pick-and-place.
+        </p>
+        <div class="vcontainer">
+            <video class="video" controls playsinline autoplay muted preload="metadata" title="Select Jelly demo">
+                <source src="img/demo_jelly.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div class="demo-block">
+        <h3>Select Fruit and Vegetable</h3>
+        <p class="task-desc">
+            Various bell peppers and bananas are placed in two produce bins.
+            The robot must grasp one or more specified objects in the indicated pointing order and place them into a basket.
+            A trial is successful only if the exact target objects are grasped and placed in the correct order.
+        </p>
+        <div class="vcontainer">
+            <video class="video" controls playsinline autoplay muted preload="metadata" title="Select Fruit and Vegetable demo">
+                <source src="img/demo_produce.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <p class="demo-alt-links">
+        If the video does not load, click <a href="https://cloud.tsinghua.edu.cn/f/6d0d69db71c9447a94a7/?dl=1">HERE</a> to download.
     </p>
 
     <div class="section">
@@ -94,15 +257,6 @@
             that incorporating gesture consistently improves target grounding accuracy and human-robot interaction
             efficiency, especially in complex and cluttered environments.
         </p>
-
-        <div class="row align-items-center">
-            <div class="col justify-content-center text-center">
-                <img src="img/teaser.png" alt="teaser" width="50%">
-                <p class="text-muted" style="font-size: 90%; margin-top: 10px;">
-                    Comparison between language-only VLA and gesture-aware GesVLA: pointing resolves ambiguity in cluttered scenes.
-                </p>
-            </div>
-        </div>
     </div>
 
     <div class="section">
@@ -173,10 +327,10 @@
     <hr>
 </div>
 
-<p><center>
+<p class="text-center">
     <br>
     &copy; Wenxuan Guo | Last update: May 11, 2026
-</center></p>
+</p>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
